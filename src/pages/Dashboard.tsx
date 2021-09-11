@@ -15,6 +15,8 @@ import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 import { Chart } from '../components/Chart'
 import { Table } from '../components/Table'
+import { data } from '../services/data'
+import { mapData } from '../hooks/data'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -127,20 +129,14 @@ const Dashboard: React.FC = () => {
         <div className={styles.appBarSpacer} />
         <Container maxWidth="lg" className={styles.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart data={mapData(data)} />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                {/*<Deposits />*/}
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={styles.paper}>
-                <Table />
+                <Table rows={data} />
               </Paper>
             </Grid>
           </Grid>

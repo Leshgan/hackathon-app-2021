@@ -2,6 +2,7 @@ import React from 'react'
 import { useTheme } from '@material-ui/core/styles'
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts'
 import Typography from '@material-ui/core/Typography'
+import {DataItem} from "../types/dataItem";
 
 type Data = { time: string, amount: number | undefined }
 
@@ -21,7 +22,11 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export const Chart: React.FC = () => {
+type Props = {
+  data: DataItem[]
+}
+
+export const Chart: React.FC<Props> = () => {
   const theme = useTheme();
 
   return (
