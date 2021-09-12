@@ -93,24 +93,6 @@ const useStyles = makeStyles((theme) => {
           backgroundColor: darken('#ccc', 0.1),
         },
       },
-      '& .cell-plan': {
-        backgroundColor: lighten('#FAFAD2', 0.3),
-        '&:hover': {
-          backgroundColor: darken('#FAFAD2', 0.1),
-        },
-      },
-      '& .cell-dismissal': {
-        backgroundColor: lighten('#FFC0CB', 0.3),
-        '&:hover': {
-          backgroundColor: darken('#FFC0CB', 0.1),
-        },
-      },
-      '& .cell-employment': {
-        backgroundColor: lighten('#98FB98', 0.3) + '!important',
-        '&:hover': {
-          backgroundColor: darken('#98FB98', 0.1),
-        },
-      },
       '& .current-week-row': {
         backgroundColor: getBackgroundColor(theme.palette.success.main),
         '&:hover': {
@@ -159,7 +141,6 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 100,
     editable: true,
-    cellClassName: 'cell-plan',
   },
   {
     field: 'dismissalPlan',
@@ -168,7 +149,6 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 120,
     editable: true,
-    cellClassName: 'cell-dismissal',
   },
   {
     field: 'growPlanWithRoutine',
@@ -176,7 +156,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
-    cellClassName: 'cell-plan',
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'employmentFact',
@@ -185,7 +165,6 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 100,
     editable: true,
-    cellClassName: 'cell-employment',
   },
   {
     field: 'dismissalFact',
@@ -194,7 +173,6 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 120,
     editable: true,
-    cellClassName: 'cell-dismissal',
   },
   {
     field: 'growFactWithRoutine',
@@ -210,7 +188,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    cellClassName: 'cell-plan',
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'growFact',
