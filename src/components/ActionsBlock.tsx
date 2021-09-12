@@ -18,8 +18,9 @@ import dayjs from 'dayjs'
 import {DataItem} from "../types/dataItem";
 
 type SavedPlan = {
-  id: number,
-  planName: string,
+  id: number
+  week: string | number
+  planName: string
   data: DataItem[]
 }
 
@@ -30,13 +31,14 @@ export const ActionsBlock = () => {
   const [anchorMenu, setAnchorMenu] = React.useState<null | HTMLElement>(null)
   const styles = useStyles()
   // @ts-ignore
-  const { planningData, updateData } = useStore()
+  const { planningData, updateData, setLoadedPlan } = useStore()
 
   const handleSave = () => {
     const newPlans = [
       ...plans,
       {
         id: (new Date()).getTime(),
+        week: planName, //dayjs().week()
         planName: `План на неделю ${planName}`,
         data: planningData
       }
@@ -60,7 +62,7 @@ export const ActionsBlock = () => {
   }
 
   const handleLoadPlan = (plan: SavedPlan) => {
-    console.log('CHOSEN PLAN', plan)
+    setLoadedPlan(plan);
     handleCloseMenu()
   }
 

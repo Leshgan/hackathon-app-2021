@@ -11,7 +11,7 @@ export const data: ConstantData[] = [
     "sick": 0,
     "vocation": 0,
     "toProject": 0,
-    "fromProject": 5
+    "fromProject": 5,
   },
   {
     "id": 30,
@@ -23,7 +23,7 @@ export const data: ConstantData[] = [
     "sick": 0,
     "vocation": 3,
     "toProject": 8,
-    "fromProject": 6
+    "fromProject": 6,
   },
   {
     "id": 31,
@@ -35,7 +35,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 3,
     "toProject": 5,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 32,
@@ -47,7 +47,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 3,
     "toProject": 4,
-    "fromProject": 2
+    "fromProject": 2,
   },
   {
     "id": 33,
@@ -59,7 +59,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 3,
     "toProject": 4,
-    "fromProject": 4
+    "fromProject": 4,
   },
   {
     "id": 34,
@@ -71,7 +71,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 3,
     "toProject": 5,
-    "fromProject": 0
+    "fromProject": 0,
   },
   {
     "id": 35,
@@ -83,7 +83,7 @@ export const data: ConstantData[] = [
     "sick": 3,
     "vocation": 4,
     "toProject": 7,
-    "fromProject": 6
+    "fromProject": 6,
   },
   {
     "id": 36,
@@ -95,7 +95,7 @@ export const data: ConstantData[] = [
     "sick": 0,
     "vocation": 1,
     "toProject": 3,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 37,
@@ -107,7 +107,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 3,
     "toProject": 10,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 38,
@@ -119,7 +119,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 4,
     "toProject": 4,
-    "fromProject": 2
+    "fromProject": 2,
   },
   {
     "id": 39,
@@ -131,7 +131,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 5,
     "toProject": 4,
-    "fromProject": 4
+    "fromProject": 4,
   },
   {
     "id": 40,
@@ -143,7 +143,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 4,
     "toProject": 10,
-    "fromProject": 2
+    "fromProject": 2,
   },
   {
     "id": 41,
@@ -155,7 +155,7 @@ export const data: ConstantData[] = [
     "sick": 0,
     "vocation": 2,
     "toProject": 8,
-    "fromProject": 4
+    "fromProject": 4,
   },
   {
     "id": 42,
@@ -167,7 +167,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 5,
     "toProject": 2,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 43,
@@ -179,7 +179,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 6,
     "toProject": 5,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 44,
@@ -191,7 +191,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 9,
     "toProject": 2,
-    "fromProject": 4
+    "fromProject": 4,
   },
   {
     "id": 45,
@@ -203,7 +203,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 5,
     "toProject": 3,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 46,
@@ -215,7 +215,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 3,
     "toProject": 3,
-    "fromProject": 4
+    "fromProject": 4,
   },
   {
     "id": 47,
@@ -227,7 +227,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 2,
     "toProject": 7,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 48,
@@ -239,7 +239,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 2,
     "toProject": 9,
-    "fromProject": 4
+    "fromProject": 4,
   },
   {
     "id": 49,
@@ -251,7 +251,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 4,
     "toProject": 10,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 50,
@@ -263,7 +263,7 @@ export const data: ConstantData[] = [
     "sick": 4,
     "vocation": 6,
     "toProject": 5,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 51,
@@ -275,7 +275,7 @@ export const data: ConstantData[] = [
     "sick": 3,
     "vocation": 6,
     "toProject": 9,
-    "fromProject": 5
+    "fromProject": 5,
   },
   {
     "id": 52,
@@ -287,7 +287,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 7,
     "toProject": 1,
-    "fromProject": 3
+    "fromProject": 3,
   },
   {
     "id": 53,
@@ -299,7 +299,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 8,
     "toProject": 4,
-    "fromProject": 2
+    "fromProject": 2,
   },
   {
     "id": 54,
@@ -311,7 +311,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 9,
     "toProject": 4,
-    "fromProject": 2
+    "fromProject": 2,
   },
   {
     "id": 55,
@@ -323,7 +323,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 12,
     "toProject": 3,
-    "fromProject": 2
+    "fromProject": 2,
   },
   {
     "id": 56,
@@ -334,8 +334,8 @@ export const data: ConstantData[] = [
     "dismissalFact": 0,
     "sick": 1,
     "vocation": 5,
-    "toProject": 4,
-    "fromProject": 3
+    "toProject": 13,
+    "fromProject": 2,
   },
   {
     "id": 57,
@@ -345,9 +345,9 @@ export const data: ConstantData[] = [
     "employmentFact": 5,
     "dismissalFact": 4,
     "sick": 2,
-    "vocation": 9,
+    "vocation": 2,
     "toProject": 9,
-    "fromProject": 4
+    "fromProject": 2,
   },
   {
     "id": 58,
@@ -359,7 +359,7 @@ export const data: ConstantData[] = [
     "sick": 3,
     "vocation": 4,
     "toProject": 2,
-    "fromProject": 2
+    "fromProject": 3,
   },
   {
     "id": 59,
@@ -371,7 +371,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 1,
     "toProject": 4,
-    "fromProject": 2
+    "fromProject": 4,
   },
   {
     "id": 60,
@@ -382,8 +382,8 @@ export const data: ConstantData[] = [
     "dismissalFact": 2,
     "sick": 2,
     "vocation": 0,
-    "toProject": 2,
-    "fromProject": 0
+    "toProject": 6,
+    "fromProject": 3,
   },
   {
     "id": 61,
@@ -394,8 +394,8 @@ export const data: ConstantData[] = [
     "dismissalFact": 1,
     "sick": 4,
     "vocation": 2,
-    "toProject": 2,
-    "fromProject": 4
+    "toProject": 4,
+    "fromProject": 2,
   },
   {
     "id": 62,
@@ -405,9 +405,9 @@ export const data: ConstantData[] = [
     "employmentFact": 2,
     "dismissalFact": 0,
     "sick": 0,
-    "vocation": 3,
+    "vocation": 2,
     "toProject": 2,
-    "fromProject": 3
+    "fromProject": 0,
   },
   {
     "id": 63,
@@ -419,7 +419,7 @@ export const data: ConstantData[] = [
     "sick": 2,
     "vocation": 1,
     "toProject": 4,
-    "fromProject": 1
+    "fromProject": 2,
   },
   {
     "id": 64,
@@ -431,7 +431,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 4,
     "toProject": 2,
-    "fromProject": 4
+    "fromProject": 2,
   },
   {
     "id": 65,
@@ -443,7 +443,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 2,
     "toProject": 2,
-    "fromProject": 4
+    "fromProject": 2,
   },
   {
     "id": 66,
@@ -455,7 +455,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 2,
     "toProject": 2,
-    "fromProject": 3
+    "fromProject": 2,
   },
   {
     "id": 67,
@@ -467,7 +467,7 @@ export const data: ConstantData[] = [
     "sick": 1,
     "vocation": 2,
     "toProject": 2,
-    "fromProject": 4
+    "fromProject": 2,
   },
   {
     "id": 68,
@@ -478,8 +478,8 @@ export const data: ConstantData[] = [
     "dismissalFact": 1,
     "sick": 2,
     "vocation": 2,
-    "toProject": 2,
-    "fromProject": 3
+    "toProject": 4,
+    "fromProject": 2,
   },
   {
     "id": 69,
@@ -490,8 +490,7 @@ export const data: ConstantData[] = [
     "dismissalFact": 1,
     "sick": 2,
     "vocation": 2,
-    "toProject": 1,
-    "fromProject": 3
+    "toProject": 3,
+    "fromProject": 2,
   },
-
 ]

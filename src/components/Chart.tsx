@@ -37,11 +37,15 @@ const createData  = ({week, kz}: DataItem): ChartData => {
 export const Chart: React.FC<Props> = ({ data }) => {
   const theme = useTheme();
   // @ts-ignore
-  const planningData = useStore(state => state.planningData)
+  const { planningData, loadedPlan } = useStore()
   const [items, setItems] = useState<ChartData[]>(data.map(createData))
 
   const currentWeek = dayjs().week()
   const currentWeekValue = items.find(item => +item.week === +currentWeek)?.kz
+  const loadedPlanWeekValue = planningData && loadedPlan
+    ? planningData.find((item: any) => +item.week === +loadedPlan)?.kz
+    : null
+  console.log('LOADED VAL', loadedPlanWeekValue)
 
   useEffect(() => {
     if (planningData && planningData.length === items.length) {
@@ -88,6 +92,9 @@ export const Chart: React.FC<Props> = ({ data }) => {
             </Label>
           </YAxis>
           <ReferenceLine stroke="red" label="Сегодня" segment={[{ x: currentWeek, y: 0 }, { x: currentWeek, y: currentWeekValue }]} />
+          {
+            loadedPlan && <ReferenceLine stroke="green" label={`План недели ${loadedPlan}`} segment={[{ x: loadedPlan, y: 0 }, { x: loadedPlan, y: loadedPlanWeekValue }]} />
+          }
           <Tooltip labelFormatter={(label) => <>Номер недели: {label}</>} />
           <Legend verticalAlign="top" />
           <Line name="КЗ" type="monotone" dataKey="kz" stroke={theme.palette.primary.main} dot={false} />

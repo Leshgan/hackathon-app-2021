@@ -23,7 +23,13 @@ export const Table: React.FC<Props> = ({ rows }) => {
   const [data, setData] = useState<DataItem[]>(initialData)
   const currentWeek = dayjs().week()
   // @ts-ignore
-  const { updateData } = useStore()
+  const { planningData, updateData } = useStore()
+
+  useEffect(() => {
+    if (!planningData) {
+      setData(initialData)
+    }
+  }, [planningData])
 
   const handleCellEditCommit = ({id, field, value}: GridCellEditCommitParams): void => {
     let isEdited = false
