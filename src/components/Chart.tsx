@@ -1,29 +1,61 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useTheme } from '@material-ui/core/styles'
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, ReferenceLine } from 'recharts'
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Label,
+  ResponsiveContainer,
+  ReferenceLine,
+  Tooltip,
+  Legend,
+} from 'recharts'
 import Typography from '@material-ui/core/Typography'
 import {DataItem} from '../types/dataItem'
-import {getDateRangeOfWeek} from '../utils/date'
 import dayjs from 'dayjs'
-
-// const createData  = ({week, kz}: DataItem): { week: string, kz: string | number | undefined } => {
-//   return {
-//     week: getDateRangeOfWeek(week),
-//     kz
-//   }
-// }
+import { useStore } from '../state/store'
 
 type Props = {
   data: DataItem[]
 }
 
+type ChartData = {
+  week: number | string
+  kz: number
+  planKz: number
+}
+
+const createData  = ({week, kz}: DataItem): ChartData => {
+  return {
+    week,
+    kz,
+    planKz: kz
+  }
+}
+
 export const Chart: React.FC<Props> = ({ data }) => {
   const theme = useTheme();
-  // const initialData = data.map(createData)
+  // @ts-ignore
+  const planningData = useStore(state => state.planningData)
+  const [items, setItems] = useState<ChartData[]>(data.map(createData))
 
-  const [items, setItems] = useState(data)
   const currentWeek = dayjs().week()
   const currentWeekValue = items.find(item => +item.week === +currentWeek)?.kz
+
+  useEffect(() => {
+    if (planningData && planningData.length === items.length) {
+      const newData = []
+      for (let i = 0; i < items.length; i++) {
+        newData.push({
+          week: items[i].week,
+          kz: items[i].kz,
+          planKz: planningData[i].kz
+        })
+      }
+      setItems(newData)
+    }
+  }, [data, planningData])
 
   return (
     <React.Fragment>
@@ -56,7 +88,10 @@ export const Chart: React.FC<Props> = ({ data }) => {
             </Label>
           </YAxis>
           <ReferenceLine stroke="red" label="Сегодня" segment={[{ x: currentWeek, y: 0 }, { x: currentWeek, y: currentWeekValue }]} />
+          <Tooltip />
+          <Legend />
           <Line type="monotone" dataKey="kz" stroke={theme.palette.primary.main} dot={false} />
+          {planningData && <Line type="monotone" dataKey="planKz" stroke="#82ca9d" dot={false} />}
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>

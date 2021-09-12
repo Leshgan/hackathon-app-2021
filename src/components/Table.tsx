@@ -11,6 +11,7 @@ import { getDateRangeOfWeek } from '../utils/date'
 import { mapData } from '../hooks/data'
 import { makeStyles, darken, lighten } from '@material-ui/core/styles'
 import dayjs from "dayjs";
+import { useStore } from '../state/store'
 
 type Props = {
   rows: ConstantData[]
@@ -21,10 +22,12 @@ export const Table: React.FC<Props> = ({ rows }) => {
   const initialData = mapData(rows)
   const [data, setData] = useState<DataItem[]>(initialData)
   const currentWeek = dayjs().week()
+  // @ts-ignore
+  const { updateData } = useStore()
 
   useEffect(() => {
-    console.log('DATA CHANGED', data)
-  }, [data])
+    updateData(data)
+  }, [data, updateData])
 
   const handleCellEditCommit = ({id, field, value}: GridCellEditCommitParams): void => {
     let isEdited = false
