@@ -1,14 +1,94 @@
+import React, {useEffect, useState} from 'react'
 import {
-  DataGrid,
+  DataGrid, GridCellEditCommitParams,
   GridColDef,
   GridColumnHeaderParams,
-  GridRenderCellParams,
+  GridRenderCellParams, GridRowParams,
 } from '@mui/x-data-grid'
 import Typography from "@material-ui/core/Typography"
 import {ConstantData, DataItem} from '../types/dataItem'
 import { getDateRangeOfWeek } from '../utils/date'
-import { useState } from 'react'
 import { mapData } from '../hooks/data'
+import { makeStyles, darken, lighten } from '@material-ui/core/styles'
+import dayjs from "dayjs";
+
+type Props = {
+  rows: ConstantData[]
+}
+
+export const Table: React.FC<Props> = ({ rows }) => {
+  const classes = useStyles()
+  const initialData = mapData(rows)
+  const [data, setData] = useState<DataItem[]>(initialData)
+  const currentWeek = dayjs().week()
+
+  useEffect(() => {
+    console.log('DATA CHANGED', data)
+  }, [data])
+
+  const handleCellEditCommit = ({id, field, value}: GridCellEditCommitParams): void => {
+    let isEdited = false
+    const newData = data.map((item) => {
+      if (item.id === id && item[field as keyof DataItem] !== value) {
+        isEdited = true
+        return {
+          ...item,
+          [field]: value,
+        }
+      }
+      return item
+    })
+    if (isEdited) {
+      setData(mapData(newData))
+    }
+  }
+
+  const getRowClassName = ({ id, getValue }: GridRowParams): string => {
+    const week = getValue(id, 'week')
+    if (week === currentWeek) {
+      return 'current-week-row'
+    }
+    return ''
+  }
+
+  return (
+    <div style={{ height: '500px', width: '100%' }} className={classes.root}>
+      <DataGrid
+        columns={columns}
+        rows={data}
+        headerHeight={100}
+        disableColumnMenu
+        hideFooterPagination
+        onCellEditCommit={handleCellEditCommit}
+        getRowClassName={getRowClassName}
+      />
+    </div>
+  )
+
+}
+
+const useStyles = makeStyles((theme) => {
+  const getBackgroundColor = (color: string) =>
+    theme.palette.type === 'dark'
+      ? darken(color, 0.6)
+      : lighten(color, 0.6);
+
+  const getHoverBackgroundColor = (color: string) =>
+    theme.palette.type === 'dark'
+      ? darken(color, 0.5)
+      : lighten(color, 0.5);
+
+  return {
+    root: {
+      '& .current-week-row': {
+        backgroundColor: getBackgroundColor(theme.palette.success.main),
+        '&:hover': {
+          backgroundColor: getHoverBackgroundColor(theme.palette.success.main),
+        },
+      }
+    }
+  }
+})
 
 const renderMultilineHeader = ({ colDef }: GridColumnHeaderParams) => {
   const label = colDef.headerName!.split(' ')
@@ -28,12 +108,17 @@ const columns: GridColDef[] = [
     renderCell: (params: GridRenderCellParams) => {
       const values = getDateRangeOfWeek(params.value as number).split(' - ')
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          {values.map((item, i) => <Typography key={i}>{item}</Typography>)}
+        <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', margin: '0 10px', padding: '0 10px' }}>
+            {params.value}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {values.map((item, i) => <Typography key={i}>{item}</Typography>)}
+          </div>
         </div>
       )
     },
-    width: 150
+    width: 180,
   },
   {
     field: 'employmentPlan',
@@ -41,7 +126,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
-    editable: true
+    editable: true,
   },
   {
     field: 'dismissalPlan',
@@ -49,7 +134,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
+    editable: true,
   },
   {
     field: 'growPlanWithRoutine',
@@ -57,7 +142,6 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
-    editable: true
   },
   {
     field: 'employmentFact',
@@ -65,7 +149,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
-    editable: true
+    editable: true,
   },
   {
     field: 'dismissalFact',
@@ -73,7 +157,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
+    editable: true,
   },
   {
     field: 'growFactWithRoutine',
@@ -81,7 +165,6 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
   },
   {
     field: 'growPlan',
@@ -89,7 +172,6 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
   },
   {
     field: 'growFact',
@@ -97,7 +179,6 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
-    editable: true
   },
   {
     field: 'sick',
@@ -105,7 +186,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
+    editable: true,
   },
   {
     field: 'vocation',
@@ -113,14 +194,14 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
+    editable: true,
   },
   {
     field: 'kz',
     headerName: 'КЗ, %',
     type: 'number',
     renderHeader: renderMultilineHeader,
-    width: 100
+    width: 100,
   },
   {
     field: 'free',
@@ -128,7 +209,6 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
   },
   {
     field: 'toProject',
@@ -136,7 +216,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
-    editable: true
+    editable: true,
   },
   {
     field: 'fromProject',
@@ -144,30 +224,6 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
-    editable: true
+    editable: true,
   },
 ];
-
-type Props = {
-  rows: ConstantData[]
-}
-
-const Table: React.FC<Props> = ({ rows }) => {
-  const initialData = mapData(rows)
-  console.log('mapped data', initialData)
-  const [data, setData] = useState<DataItem[]>(initialData.slice())
-
-  return (
-    <div style={{ height: '800px', width: '100%' }}>
-      <DataGrid
-        columns={columns}
-        rows={data}
-        headerHeight={100}
-        disableColumnMenu
-        hideFooterPagination
-      />
-    </div>
-  )
-}
-
-export { Table }

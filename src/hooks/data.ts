@@ -5,6 +5,7 @@ const initialFree = 24
 
 export const mapData = (data: ConstantData[]): DataItem[] => {
   const result: DataItem[] = []
+
   data.forEach((item, index) => {
     const getGrowPlanWithRoutine = (value: ConstantData): number => value.employmentPlan - value.dismissalPlan
     const getGrowFactWithRoutine = (value: ConstantData): number => value.employmentFact - value.dismissalFact
@@ -25,14 +26,15 @@ export const mapData = (data: ConstantData[]): DataItem[] => {
     }
 
     result.push({
+      ...item,
       growPlanWithRoutine: getGrowPlanWithRoutine(item), // План роста с текучкой
       growFactWithRoutine: getGrowFactWithRoutine(item), // Факт роста с текучкой
       growPlan: (index > 0 ? result[index - 1].growPlan : initialEmployers) + getGrowPlanWithRoutine(item), // План роста с нач. года
       growFact: getGrowFact(item), // Факт роста
       kz: getKz(item), // 'КЗ, %
       free: getFree(item) , // Не занятые
-      ...item,
     })
   })
+
   return result
 }

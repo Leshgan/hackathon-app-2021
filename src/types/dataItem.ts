@@ -21,3 +21,7 @@ type CalculatedData = {
 }
 
 export type DataItem = ConstantData & CalculatedData
+// type keys = keyof ConstantData & keyof CalculatedData
+// export type DataItem = {
+//   [key: keys]: any
+// }
