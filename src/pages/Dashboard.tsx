@@ -17,6 +17,7 @@ import { Chart } from '../components/Chart'
 import { Table } from '../components/Table'
 import { data } from '../services/data'
 import { mapData } from '../hooks/data'
+import { ActionsBlock } from '../components/ActionsBlock'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -98,7 +99,7 @@ const Dashboard: React.FC = () => {
       <MenuItem onClick={handleMenuClose}>Профиль</MenuItem>
       <MenuItem onClick={handleMenuClose}>Выйти</MenuItem>
     </Menu>
-  );
+  )
 
   return (
     <div className={styles.root}>
@@ -134,6 +135,11 @@ const Dashboard: React.FC = () => {
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
                 <Chart data={mapData(data)} />
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper className={styles.paper}>
+                <ActionsBlock />
               </Paper>
             </Grid>
             <Grid item xs={12}>

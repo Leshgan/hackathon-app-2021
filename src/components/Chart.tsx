@@ -88,7 +88,7 @@ export const Chart: React.FC<Props> = ({ data }) => {
             </Label>
           </YAxis>
           <ReferenceLine stroke="red" label="Сегодня" segment={[{ x: currentWeek, y: 0 }, { x: currentWeek, y: currentWeekValue }]} />
-          <Tooltip labelFormatter={(label) => <p>Номер недели: {label}</p>} />
+          <Tooltip labelFormatter={(label) => <>Номер недели: {label}</>} />
           <Legend verticalAlign="top" />
           <Line name="КЗ" type="monotone" dataKey="kz" stroke={theme.palette.primary.main} dot={false} />
           {planningData && <Line name="КЗ план" type="monotone" dataKey="planKz" stroke="#82ca9d" dot={false} />}

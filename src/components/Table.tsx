@@ -81,12 +81,6 @@ const useStyles = makeStyles((theme) => {
 
   return {
     root: {
-      '& .current-week-row': {
-        backgroundColor: getBackgroundColor(theme.palette.success.main),
-        '&:hover': {
-          backgroundColor: getHoverBackgroundColor(theme.palette.success.main),
-        },
-      },
       '& .cell-readonly': {
         backgroundColor: lighten('#ccc', 0.3),
         '&:hover': {
@@ -106,12 +100,17 @@ const useStyles = makeStyles((theme) => {
         },
       },
       '& .cell-employment': {
-        backgroundColor: lighten('#98FB98', 0.3),
+        backgroundColor: lighten('#98FB98', 0.3) + '!important',
         '&:hover': {
           backgroundColor: darken('#98FB98', 0.1),
         },
       },
-
+      '& .current-week-row': {
+        backgroundColor: getBackgroundColor(theme.palette.success.main),
+        '&:hover': {
+          backgroundColor: getHoverBackgroundColor(theme.palette.success.main),
+        },
+      },
     }
   }
 })
