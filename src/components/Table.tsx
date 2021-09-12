@@ -25,13 +25,9 @@ export const Table: React.FC<Props> = ({ rows }) => {
   // @ts-ignore
   const { updateData } = useStore()
 
-  useEffect(() => {
-    updateData(data)
-  }, [data, updateData])
-
   const handleCellEditCommit = ({id, field, value}: GridCellEditCommitParams): void => {
     let isEdited = false
-    const newData = data.map((item) => {
+    let newData = data.map((item) => {
       if (item.id === id && item[field as keyof DataItem] !== value) {
         isEdited = true
         return {
@@ -42,7 +38,9 @@ export const Table: React.FC<Props> = ({ rows }) => {
       return item
     })
     if (isEdited) {
-      setData(mapData(newData))
+      newData = mapData(newData)
+      setData(newData)
+      updateData(newData)
     }
   }
 
@@ -88,7 +86,32 @@ const useStyles = makeStyles((theme) => {
         '&:hover': {
           backgroundColor: getHoverBackgroundColor(theme.palette.success.main),
         },
-      }
+      },
+      '& .cell-readonly': {
+        backgroundColor: lighten('#ccc', 0.3),
+        '&:hover': {
+          backgroundColor: darken('#ccc', 0.1),
+        },
+      },
+      '& .cell-plan': {
+        backgroundColor: lighten('#FAFAD2', 0.3),
+        '&:hover': {
+          backgroundColor: darken('#FAFAD2', 0.1),
+        },
+      },
+      '& .cell-dismissal': {
+        backgroundColor: lighten('#FFC0CB', 0.3),
+        '&:hover': {
+          backgroundColor: darken('#FFC0CB', 0.1),
+        },
+      },
+      '& .cell-employment': {
+        backgroundColor: lighten('#98FB98', 0.3),
+        '&:hover': {
+          backgroundColor: darken('#98FB98', 0.1),
+        },
+      },
+
     }
   }
 })
@@ -122,6 +145,7 @@ const columns: GridColDef[] = [
       )
     },
     width: 180,
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'employmentPlan',
@@ -130,6 +154,7 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 100,
     editable: true,
+    cellClassName: 'cell-plan',
   },
   {
     field: 'dismissalPlan',
@@ -138,6 +163,7 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 120,
     editable: true,
+    cellClassName: 'cell-dismissal',
   },
   {
     field: 'growPlanWithRoutine',
@@ -145,6 +171,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
+    cellClassName: 'cell-plan',
   },
   {
     field: 'employmentFact',
@@ -153,6 +180,7 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 100,
     editable: true,
+    cellClassName: 'cell-employment',
   },
   {
     field: 'dismissalFact',
@@ -161,6 +189,7 @@ const columns: GridColDef[] = [
     renderHeader: renderMultilineHeader,
     width: 120,
     editable: true,
+    cellClassName: 'cell-dismissal',
   },
   {
     field: 'growFactWithRoutine',
@@ -168,6 +197,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'growPlan',
@@ -175,13 +205,15 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
+    cellClassName: 'cell-plan',
   },
   {
     field: 'growFact',
-    headerName: 'Факт роста',
+    headerName: 'Реальная числ. напр.',
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'sick',
@@ -205,6 +237,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 100,
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'free',
@@ -212,6 +245,7 @@ const columns: GridColDef[] = [
     type: 'number',
     renderHeader: renderMultilineHeader,
     width: 120,
+    cellClassName: 'cell-readonly',
   },
   {
     field: 'toProject',

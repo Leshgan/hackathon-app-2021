@@ -22,7 +22,8 @@ export const mapData = (data: ConstantData[]): DataItem[] => {
       return (index > 0 ? result[index - 1].growFact : initialEmployers) + getGrowFactWithRoutine(value)
     }
     const getKz = (value: ConstantData): number => {
-      return 100 - (100 / getGrowFact(value) * getFree(value)) - (value.sick + value.vocation)
+      const result = 100 - (100 / getGrowFact(value) * getFree(value)) - (value.sick + value.vocation)
+      return Math.round(result * 100) / 100
     }
 
     result.push({
