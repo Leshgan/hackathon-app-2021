@@ -31,7 +31,7 @@ export const ActionsBlock = () => {
   const [anchorMenu, setAnchorMenu] = React.useState<null | HTMLElement>(null)
   const styles = useStyles()
   // @ts-ignore
-  const { planningData, updateData, setLoadedPlan } = useStore()
+  const { planningData, setLoadedPlan, resetPlan } = useStore()
 
   const handleSave = () => {
     const newPlans = [
@@ -73,7 +73,7 @@ export const ActionsBlock = () => {
   }
 
   const handleResetPlan = () => {
-    updateData(null)
+    resetPlan()
   }
 
   const renderMenus = () => {

@@ -45,7 +45,7 @@ export const Chart: React.FC<Props> = ({ data }) => {
   const loadedPlanWeekValue = planningData && loadedPlan
     ? planningData.find((item: any) => +item.week === +loadedPlan)?.kz
     : null
-  console.log('LOADED VAL', loadedPlanWeekValue)
+  console.log('LOADED VAL', loadedPlanWeekValue, loadedPlan)
 
   useEffect(() => {
     if (planningData && planningData.length === items.length) {
